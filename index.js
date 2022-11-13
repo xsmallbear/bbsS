@@ -1,10 +1,12 @@
+'use strict'
+
 const request = require('sync-request');
 const cheerio = require("cheerio")
 const fs = require("fs");
 
-const Setting = require("./setting")
-const util = require("./util")
-const color = require("./color");
+const Setting = require("./src/setting")
+const util = require("./src/util")
+const color = require("./src/color");
 const { time } = require('console');
 
 const MCBBSURL = "https://www.mcbbs.net/";
@@ -16,7 +18,7 @@ function error(msg) {
         console.log(msg)
     } else {
         console.log("error!")
-    }
+    } 
     process.exit(1);
 }
 
@@ -119,7 +121,7 @@ function bsearch(findValue, maxpage, info) {
     }
 }
 
-function main() {
+function bbss() {
     process.stdin.setEncoding("utf-8")
     let args = process.argv.splice(2);
     let restLen = args.length - 1;
@@ -150,4 +152,4 @@ function main() {
     }
 }
 
-main();
+module.exports = bbss
