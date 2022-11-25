@@ -1,5 +1,5 @@
 const Setting = {
-    test:"hello"
+    MCBBSURL:"https://www.mcbbs.net/"
 }
 
 module.exports = Setting

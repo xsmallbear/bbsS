@@ -1,7 +1,7 @@
 let util = {};
 
 util.getMCBBSpage = ($) => {
-    let $pageDom = $(".pgs.cl.mbm").find("span")
+    let $pageDom = $(".pgs.cl").find(".pg").find("span")
     let pageTitle = $pageDom.attr("title")
     if (pageTitle) {
         let pageCount = parseInt(pageTitle.substring(2, 5));
@@ -19,6 +19,21 @@ util.cleanSearchResultAStrong = ($) => {
         htmlStr = htmlStr.replace(matchTags, "")
     }
     return htmlStr;
+}
+
+util.cleanHTMLTag = (str) => {
+    let matchTags = /<[^>]+>/g;
+    let htmlStr = str.replace(matchTags, "")
+    return htmlStr;
+}
+
+util.error = (msg) => {
+    if (msg) {
+        console.log("[ERROR] " + msg)
+    } else {
+        console.log("[ERROR] program error!!!")
+    }
+    process.exit(1);
 }
 
 module.exports = util;
