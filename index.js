@@ -7,7 +7,7 @@ const look = require("./src/command/look")
 const help = require("./src/command/help")
 const bsearch = require("./src/command/bsearch")
 
-DEBUG.status = true;
+DEBUG.status = false;
 
 function bbss() {
     process.stdin.setEncoding("utf-8")
@@ -38,26 +38,6 @@ function bbss() {
     } else {
         help()
     }
-
-    // if (option === "help" && remainLength === 0) {
-    //     help();
-    //     return
-    // }
-    // if (option === "bsearch" && remainLength >= 2 && remainLength <= 3) {
-    //     let value = remainArgs[0];
-    //     let maxPage = parseInt(remainArgs[1]);
-    //     let info = remainArgs[2];
-    //     bsearch(value, maxPage, info);
-    //     return
-    // }
-    // if (option === "look") {
-    //     // let tid = parseInt(remainArgs[0]);
-    //     // if(Number.isNaN(tid)) util.error(`${remainArgs[0]} not a number`)
-    //     look(remainArgs, remainLength);
-    //     return
-    // }
-    //Error
-    // console.log("no command pls use bbsS help")
 }
 
 module.exports = bbss

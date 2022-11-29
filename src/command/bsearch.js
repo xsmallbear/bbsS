@@ -10,12 +10,13 @@ const util = require("../../src/help/util")
 const OUTPUT = "output.log"
 
 const bsearch = (remainLength, remainArgs) => {
-    if (remainLength < 2 || remainLength > 3) {
+    if (remainLength < 2 || remainLength > 4) {
         return false;
     }
     let findValue = remainArgs[0];
     let maxpage = parseInt(remainArgs[1]);
     let info = remainArgs[2];
+    let out = remainArgs[3]
 
     let searchFileOutBuffer = ""
     let searchUrl = `${setting.MCBBSURL}search.php?mod=forum&wd=${encodeURIComponent(findValue)}&orderby=_score&ascdesc=desc&searchsubmit=yes&srchtype=title`;
@@ -80,8 +81,10 @@ const bsearch = (remainLength, remainArgs) => {
         })
 
         //写入文件
-        fs.writeFileSync(OUTPUT, searchFileOutBuffer, "utf-8")
-        DEBUG.log("第" + (pageIndex + 1) + "页 文件写入成功")
+        if (out === "-o") {
+            fs.writeFileSync(OUTPUT, searchFileOutBuffer, "utf-8")
+            DEBUG.log("第" + (pageIndex + 1) + "页 文件写入成功")
+        }
     }
     return true;
 }
